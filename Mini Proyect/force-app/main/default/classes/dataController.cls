@@ -42,5 +42,16 @@ public with sharing class dataController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void deleteContact(String contactId) {
+        try {
+            Contact contactToDelete = [SELECT Id FROM Contact WHERE Id = :contactId LIMIT 1];
+            
+            delete contactToDelete;
+        } catch (Exception e) {
+            throw new AuraHandledException('Error al eliminar el contacto: ' + e.getMessage());
+        }
+    }
     
 }
