@@ -1,0 +1,20 @@
+<template>
+    <template for:each={fieldValues} for:item="field">
+        <div key={field.fieldName} class="slds-col">
+            <lightning-input
+            label={field.label}
+            data-id={field.fieldName}
+            value={field.value}
+            onchange={handleFieldChange}>
+        
+            </lightning-input>
+
+        </div>
+    </template>
+    <div class="slds-modal__footer">
+        <button class="slds-button slds-button_neutral" aria-label="Cancel and close"
+            onclick={handleCancel}>Cancel</button>
+        <button class="slds-button slds-button_brand" 
+            onclick={handleSave}>Save</button>
+    </div>
+</template>

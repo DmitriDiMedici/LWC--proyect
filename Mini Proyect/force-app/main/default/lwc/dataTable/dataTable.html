@@ -1,0 +1,34 @@
+<template>
+
+    <c-data-header
+        onclick={handleNewContact}>
+    <span slot="title">{title}</span>
+
+    </c-data-header>
+    
+    <lightning-datatable
+        key-field="Id"
+        data={data}
+        columns={columns}
+        onrowaction={handleRowActions}>
+
+    </lightning-datatable>
+
+    <template if:true={displayModal}>
+        <c-data-modal>
+            <span slot="title">{title}</span>
+            <span slot="body">
+                <c-data-form
+                    columns={columns}
+                    row-fields={rowFields}
+                    onclose={handleCloseModal}
+                    onsave={handleSave}
+                    >
+
+                >
+
+                </c-data-form>
+            </span>
+        </c-data-modal>
+    </template>
+</template>
